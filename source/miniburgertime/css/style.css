@@ -269,12 +269,12 @@ a.jp-play {
 a.jp-pause {
   background: url("../img/jplayer.png") -33px 0 no-repeat;
 }
+/* progress */
 div.jp-progress {
   overflow:hidden;
-  background-color: #ddd;
+  background-color: yellow;
 }
 div.jp-audio div.jp-progress {
-  position: absolute;
   top:32px;
   height:15px;
 }
@@ -289,13 +289,13 @@ div.jp-video div.jp-progress {
   height:10px;
 }
 div.jp-seek-bar {
-  background: url("../img/jplayer.png") 0 -45px repeat-x;
+  background: url("../img/jplayer.png") 0 -29px repeat-x ;
   width:0px;
   height:100%;
   cursor: pointer;
 }
 div.jp-play-bar {
-  background: url("../img/jplayer.png") 0 -29px repeat-x ;
+  background: url("../img/jplayer.png") 0 -45px repeat-x;
   width:0px;
   height:100%;
 }
@@ -304,6 +304,7 @@ div.jp-play-bar {
 div.jp-seeking-bg {
   background: url("../img/seeking.gif");
 }
+/* end progress */
 
 #circles {
   position:fixed;

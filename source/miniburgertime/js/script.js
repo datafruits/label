@@ -8,7 +8,7 @@ $("#track-player-01").jPlayer({
   supplied: "mp3",
   wmode: "window",
   solution: "html, flash",
-  cssSelectorAncestor: ".jp-controls-track-01"
+  cssSelectorAncestor: "#jp-interface-01"
 }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
   $(this).jPlayer("pauseOthers");                                                                                             
 });
@@ -23,7 +23,7 @@ $("#track-player-02").jPlayer({
   supplied: "mp3",
   wmode: "window",
   solution: "html, flash",
-  cssSelectorAncestor: ".jp-controls-track-02"
+  cssSelectorAncestor: "#jp-interface-02"
 }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
   $(this).jPlayer("pauseOthers");                                                                                             
 });
@@ -38,7 +38,7 @@ $("#track-player-03").jPlayer({
   supplied: "mp3",
   wmode: "window",
   solution: "html, flash",
-  cssSelectorAncestor: ".jp-controls-track-03"
+  cssSelectorAncestor: "#jp-interface-03"
 }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
   $(this).jPlayer("pauseOthers");                                                                                             
 });
@@ -53,7 +53,7 @@ $("#track-player-04").jPlayer({
   supplied: "mp3",
   wmode: "window",
   solution: "html, flash",
-  cssSelectorAncestor: ".jp-controls-track-04"
+  cssSelectorAncestor: "#jp-interface-04"
 }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
   $(this).jPlayer("pauseOthers");                                                                                             
 });
@@ -67,7 +67,7 @@ $("#track-player-05").jPlayer({
   supplied: "mp3",
   wmode: "window",
   solution: "html, flash",
-  cssSelectorAncestor: ".jp-controls-track-05"
+  cssSelectorAncestor: "#jp-interface-05"
 }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
   $(this).jPlayer("pauseOthers");                                                                                             
 });
@@ -81,7 +81,7 @@ $("#track-player-06").jPlayer({
   supplied: "mp3",
   wmode: "window",
   solution: "html, flash",
-  cssSelectorAncestor: ".jp-controls-track-06"
+  cssSelectorAncestor: "#jp-interface-06"
 }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
   $(this).jPlayer("pauseOthers");                                                                                             
 });
@@ -95,7 +95,7 @@ $("#track-player-07").jPlayer({
   supplied: "mp3",
   wmode: "window",
   solution: "html, flash",
-  cssSelectorAncestor: ".jp-controls-track-07"
+  cssSelectorAncestor: "#jp-interface-07"
 }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
   $(this).jPlayer("pauseOthers");                                                                                             
 });
@@ -109,7 +109,7 @@ $("#track-player-08").jPlayer({
   supplied: "mp3",
   wmode: "window",
   solution: "html, flash",
-  cssSelectorAncestor: ".jp-controls-track-08"
+  cssSelectorAncestor: "#jp-interface-08"
 }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
   $(this).jPlayer("pauseOthers");                                                                                             
 });
@@ -123,7 +123,7 @@ $("#track-player-09").jPlayer({
   supplied: "mp3",
   wmode: "window",
   solution: "html, flash",
-  cssSelectorAncestor: ".jp-controls-track-09"
+  cssSelectorAncestor: "#jp-interface-09"
 }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
   $(this).jPlayer("pauseOthers");                                                                                             
 });
@@ -137,7 +137,7 @@ $("#track-player-10").jPlayer({
   supplied: "mp3",
   wmode: "window",
   solution: "html, flash",
-  cssSelectorAncestor: ".jp-controls-track-10"
+  cssSelectorAncestor: "#jp-interface-10"
 }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
   $(this).jPlayer("pauseOthers");                                                                                             
 });
