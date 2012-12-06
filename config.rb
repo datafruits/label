@@ -1,3 +1,36 @@
+set :tracks, [
+  {:num => "01",
+   :track => "01. Firedrill ✰ MINIBURGERTIME (original mix)",
+   :mp3 => "01-firedrill-miniburgertime_original_mix.mp3"},
+  {:num => "02",
+   :track => "02. Dr. Akane ✰ MINIBURGERTIME (cafeteria mix)",
+   :mp3 => "02-dr_akane-miniberg.mp3"},
+  {:num => "03",
+   :track => "03. Freedrull ✰ MINIBURGERTIME (shed mix)",
+   :mp3 => "03-freedrull-miniburgertime_shed_mix.mp3"},
+  {:num => "04",
+   :track => "04. CRZKNY ✰ MINIBURGERTIME (hiroshima fwk mix)",
+   :mp3 => "04-CRZKNY-miniburgertime_hiroshima_fwk_remix.mp3"},
+  {:num => "05",
+   :track => "05. Freedrull ✰ MINIBURGERTIME (real miniburger shit)",
+   :mp3 => "05-freedrull-miniburgertime_real_miniburger_shit.mp3"},
+  {:num => "06",
+   :track => "06. Freedrull ✰ MINIBURGERTIME (minicanadianburger)",
+   :mp3 => "06-freedrull-miniburgertime_minicandianburger.mp3"},
+  {:num => "07",
+   :track => "07. Abducted By Sharks ✰ MINIBURGERTIME (teo mix)",
+   :mp3 => "07-abducted_by_sharks-miniburgertime_teo_remix.mp3"},
+  {:num => "08",
+   :track => "08. Ovenrake ✰ MINIBURGERTIME (burgerdik mix)",
+   :mp3 => "08-ovenrake-miniburgertime_burgerdik_mix.mp3"},
+  {:num => "09",
+   :track => "09. Ridylan ✰ MINIBURGERTIME (ridylan remix)",
+   :mp3 => "09-ridylan-miniburgertime_ridylan_remix.mp3"},
+  {:num => "10",
+   :track => "10. DKSTR ✰ MINIBURGERTIME (DKSTR Paussi Special remix)",
+   :mp3 => "10-dkstr-miniburgertime_dkstr_paussi_special_remix.mp3"}
+]
+
 ###
 # Compass
 ###

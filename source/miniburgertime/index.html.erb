@@ -60,56 +60,13 @@
       <div id="tracks">
         <h1>TRACKS</h1>
         <ul>
-          <li>
-            <div id="track-player-01">
-            </div>
-            <%= partial :player_controls, :locals => {:track => "01. Firedrill ✰ MINIBURGERTIME (original mix)",:food =>"img/burger1.png" ,:num=>"01",:mp3 => "01-firedrill-miniburgertime_original_mix.mp3" } %>
-          </li>
-          <li>
-            <div id="track-player-02">
-            </div>
-            <%= partial :player_controls, :locals => {:track => "02. Dr. Akane ✰ MINIBURGERTIME (cafeteria mix)",:food =>"img/eggsaladsandwich.png" ,:num=>"02",:mp3=>"" } %>
-          </li>
-          <li>
-            <div id="track-player-03">
-            </div>
-            <%= partial :player_controls, :locals => {:track => "03. Freedrull ✰ MINIBURGERTIME (shed mix)",:food =>"img/sloppyjoe.png" ,:num=>"03",:mp3=>"" } %>
-          </li>
-          <li>
-            <div id="track-player-04">
-            </div>
-            <%= partial :player_controls, :locals => {:track => "04. CRZKNY ✰ MINIBURGERTIME (hiroshima fwk mix)",:food =>"img/jellyburger.png" ,:num=>"04",:mp3=>"" } %>
-          </li>
-          <li>
-            <div id="track-player-05">
-            </div>
-            <%= partial :player_controls, :locals => {:track => "05. Freedrull ✰ MINIBURGERTIME (real miniburger shit)",:food =>"img/burger1.png" ,:num=>"05",:mp3=>"" } %>
-          </li>
-          <li>
-            <div id="track-player-06">
-            </div>
-            <%= partial :player_controls, :locals => {:track => "06. Freedrull ✰ MINIBURGERTIME (minicanadianburger)",:food =>"img/eggsaladsandwich.png" ,:num=>"06",:mp3=>"" } %>
-          </li>
-          <li>
-            <div id="track-player-07">
-            </div>
-            <%= partial :player_controls, :locals => {:track => "07. Abducted By Sharks ✰ MINIBURGERTIME (teo mix)",:food =>"img/sloppyjoe.png" ,:num=>"07",:mp3=>"" } %>
-          </li>
-          <li>
-            <div id="track-player-08">
-            </div>
-            <%= partial :player_controls, :locals => {:track => "08. Ovenrake ✰ MINIBURGERTIME (burgerdik mix)",:food =>"img/jellyburger.png" ,:num=>"08",:mp3=>"" } %>
-          </li>
-          <li>
-            <div id="track-player-09">
-            </div>
-            <%= partial :player_controls, :locals => {:track => "09. Ridylan ✰ MINIBURGERTIME (ridylan remix)",:food =>"img/burger1.png" ,:num=>"09",:mp3=>"" } %>
-          </li>
-          <li>
-            <div id="track-player-10">
-            </div>
-            <%= partial :player_controls, :locals => {:track => "10. DKSTR ✰ MINIBURGERTIME (DKSTR Paussi Special remix)",:food =>"img/eggsaladsandwich.png" ,:num=>"10",:mp3=>"" } %>
-          </li>
+          <% settings.tracks.each do |track| %>
+            <li>
+              <div id="track-player-<%=track[:num]%>">
+              </div>
+              <%= partial :player_controls, :locals => {:track => track[:track], :food =>"img/burger1.png" ,:num=>track[:num],:mp3 => track[:mp3] } %>
+            </li>
+          <% end %>
         </ul>
         <a href="https://s3.amazonaws.com/DF001/DF001.zip"><h2>ZIP DOWNLOAD →</h2></a>
       </div>
