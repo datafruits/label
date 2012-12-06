@@ -31,6 +31,8 @@ set :tracks, [
    :mp3 => "10-dkstr-miniburgertime_dkstr_paussi_special_remix.mp3"}
 ]
 
+set :foods, ["img/burger1.png","img/eggsaladsandwich.png","img/jellyburger.png","img/sloppyjoe.png"]
+
 ###
 # Compass
 ###
@@ -74,11 +76,17 @@ set :tracks, [
 # activate :automatic_image_sizes
 
 # Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+helpers do
+  def cycle
+    @_cycle ||= reset_cycle
+    @_cycle = [@_cycle.pop] + @_cycle
+    @_cycle.first
+  end
+
+  def reset_cycle
+    @_cycle = ["img/burger1.png","img/eggsaladsandwich.png","img/jellyburger.png","img/sloppyjoe.png"]
+  end
+end
 
 set :css_dir, 'css'
 
