@@ -272,7 +272,7 @@ a.jp-pause {
 /* progress */
 div.jp-progress {
   overflow:hidden;
-  background-color: yellow;
+  background-color: #fdff68;
 }
 div.jp-audio div.jp-progress {
   top:32px;
