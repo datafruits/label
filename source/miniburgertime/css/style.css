@@ -347,6 +347,19 @@ div.jp-seeking-bg {
   width:75%;
   margin:0px auto;
 }
+nav {
+  position:fixed;
+  width:100%;
+  bottom:0;
+  height:40px;
+  background-color:#e992ff;
+}
+nav a {
+  text-transform:uppercase;
+  border-bottom:none;
+  margin: 0 25px 0 25px;
+  font-size: 25px;
+}
 
 
 /* ==|== non-semantic helper classes ========================================
