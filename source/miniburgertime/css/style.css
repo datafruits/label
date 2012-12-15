@@ -249,6 +249,7 @@ a h2 {
   background-repeat:repeat-x;
   margin-left:auto;
   margin-right:auto;
+  margin-bottom:40px;
   min-height:100%;
   width:950px;
 }
