@@ -250,8 +250,24 @@ a h2 {
   margin-left:auto;
   margin-right:auto;
   margin-bottom:40px;
+  margin-top: -17px;
   min-height:100%;
   width:950px;
+}
+
+#top {
+  width:75%;
+  margin:0px auto;
+}
+
+h1 {
+  font-family:'CooperBlack', Arial, Sans-Serif;
+  text-shadow: -2px -2px 0px #555;
+}
+
+@font-face {
+  font-family:'CooperBlack';
+  src: url('../fonts/CooperBlackStd.otf');
 }
 
 li {
