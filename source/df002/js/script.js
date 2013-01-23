@@ -8,5 +8,6 @@ $("#track-player-01").jPlayer({
   supplied: "mp3",
   wmode: "window",
   solution: "html, flash",
+  preload: "true",
   cssSelectorAncestor: "#jp-interface-01"
 });
