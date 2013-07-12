@@ -1,0 +1,44 @@
+/**
+   * Returns a random integer between min and max
+    * Using Math.round() will give you a non-uniform distribution!
+     */
+function getRandomInt (min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function gems(){
+  for(var i = 0; i < 200; i++){
+    $("#container").append("<img class='gem' src='/df004/img/gem.png' />");
+  };
+  $('.gem').css('z-index','-1').css('position','absolute');
+  $('.gem').each(function(){
+    $(this).css('top',getRandomInt(0,$(window).height()));
+    $(this).css('left',getRandomInt(0,$(window).width()-50));
+    $(this).css('transform', 'rotate('+getRandomInt(0,360)+'deg)');
+    $(this).css('-webkit-transform', 'rotate('+getRandomInt(0,360)+'deg)');
+    $(this).css('-mz-transform', 'rotate('+getRandomInt(0,360)+'deg)');
+    $(this).css('-ms-transform', 'rotate('+getRandomInt(0,360)+'deg)');
+    $(this).css('-o-transform', 'rotate('+getRandomInt(0,360)+'deg)');
+  });
+}
+
+<% settings.df004.each do |track| %>
+  $("#track-player-<%=track[:num]%>").jPlayer({
+    ready: function () {
+      $(this).jPlayer("setMedia", {
+        mp3: "https://s3.amazonaws.com/DF004/<%="#{track[:mp3]}"%>"
+      });
+    },
+    swfPath: "/df004/js/libs",
+    supplied: "mp3",
+    wmode: "window",
+    solution: "html, flash",
+    cssSelectorAncestor: "#jp-interface-<%=track[:num]%>"
+  }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
+    $(this).jPlayer("pauseOthers");                                                                                             
+  });
+<% end %>
+
+$(document).ready(function(){
+  gems();
+});

@@ -33,6 +33,18 @@ set :tracks, [
 
 set :foods, ["img/burger1.png","img/eggsaladsandwich.png","img/jellyburger.png","img/sloppyjoe.png"]
 
+set :df004, [
+  {:num => "01",
+    :track => "01. GRIME OF FUTURE PAST",
+   :mp3 => "01-sea_cuke-grime_of_future_past.mp3"},
+  {:num => "02",
+   :track => "02. GARAGE CLUB",
+   :mp3 => "02-sea_cuke-garage_club.mp3"},
+  {:num => "03",
+   :track => "03. FIREDRILL - SLURPIT (SEA CUKE REMIX)",
+   :mp3 => "03-firedrill-slurpit_sea_cuke_remix.mp3"}
+]
+
 ###
 # Compass
 ###
