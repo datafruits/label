@@ -216,7 +216,7 @@ body {
   color:white;
   font-weight:bold;
   font-style:italic;
-  @include linear-gradient(#e992ff, lighten(#2989d8, $40));
+  @include linear-gradient(#e992ff, lighten(#2989d8, 40%));
 }
 a {
   color: white;
