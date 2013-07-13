@@ -235,9 +235,6 @@ a:visited {
 }
 
 #container {
-}
-
-#main {
   background:black;
   background-repeat:repeat-x;
   margin-left:auto;
@@ -247,6 +244,20 @@ a:visited {
   min-height:100%;
   width:950px;
   padding:40px;
+}
+
+#left {
+  float: left;
+  width:400px;
+}
+
+#right {
+  float:right;
+  width:400px;
+}
+
+footer {
+  clear:both;
 }
 
 #tracks {
@@ -307,7 +318,8 @@ div.jp-seeking-bg {
 /* end progress */
 
 #description p {
-  font-size:30px;
+  font-size:25px;
+  word-break:break-all;
 }
 
 
