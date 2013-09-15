@@ -19,7 +19,7 @@ namespace :deploy do
   task :stop do ; end
   task :update do
     system("middleman build")
-    system("rsync -rv build/* freedrull@freedrool.us:/var/www/releases.datafruits.fm/")
+    system("rsync -rv build/* freedrull@freedrull.xen.prgmr.com:/var/www/releases.datafruits.fm/")
   end
   task :restart, :roles => :app, :except => { :no_release => true } do
    #run "#{try_sudo} /etc/rc.d/nginx restart"

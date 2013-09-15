@@ -45,6 +45,45 @@ set :df004, [
    :mp3 => "03-firedrill-slurpit_sea_cuke_remix.mp3"}
 ]
 
+set :df005, [
+  {:num => "01",
+   :track => "firedrill - pineapple bog",
+   :mp3 => "01_firedrill_pineapple-bog.mp3",
+  :image => "https://s3.amazonaws.com/DF005/img/pineapple.jpg"},
+  {:num => "02",
+   :track => "ovenrake - ult bem bem",
+   :mp3 => "02_ovenrake_ultbembem.mp3",
+   :image => "https://s3.amazonaws.com/DF005/img/back295.jpg"},
+  {:num => "03",
+   :track => "korma - BB6600",
+   :mp3 => "03_Korma_BB6600.mp3",
+   :image => "https://s3.amazonaws.com/DF005/img/person_with_pouting_face.png"},
+  {:num => "04",
+   :track => "firedrill - w!ld remix",
+   :mp3 => "04_firedrill_w!ld_grime_remix.mp3",
+   :image => "https://s3.amazonaws.com/DF005/img/datafruits.jpg"},
+  {:num => "05",
+   :track => "mojogoro - I LUV U remix",
+   :mp3 => "05_mojogoro_I+LUV+U+MOJOGORO+RMX.mp3",
+   :image => "https://s3.amazonaws.com/DF005/img/postcard1.png"},
+  {:num => "06",
+   :track => "the ghost potemkin - deeper boy",
+   :mp3 => "06_the-ghost-potemkin_DeeperBoy.mp3",
+   :image => "https://s3.amazonaws.com/DF005/img/seeponk.png"},
+  {:num => "07",
+   :track => "ind_fris - willie",
+   :mp3 => "07_ind-flis_Willie.mp3",
+   :image => "https://s3.amazonaws.com/DF005/img/drips.png"},
+  {:num => "08",
+   :track => "carpainter - heat up",
+   :mp3 => "08_Carpainter_HeatUp.mp3",
+   :image => "https://s3.amazonaws.com/DF005/img/train.jpg"},
+  {:num => "09",
+   :track => "peaches the whale - wot u call it (boat shed)",
+   :mp3 => "09_peaches-the-whale_wot+u+call+it+(boat+shed).mp3",
+   :image => "https://s3.amazonaws.com/DF005/img/efm.jpg"}
+]
+
 ###
 # Compass
 ###
