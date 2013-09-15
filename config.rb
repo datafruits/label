@@ -72,7 +72,7 @@ set :df005, [
    :image => "https://s3.amazonaws.com/DF005/img/seeponk.png"},
   {:num => "07",
    :track => "ind_fris - willie",
-   :mp3 => "07_ind-flis_Willie.mp3",
+   :mp3 => "07_ind-fris_Willie.mp3",
    :image => "https://s3.amazonaws.com/DF005/img/drips.png"},
   {:num => "08",
    :track => "carpainter - heat up",
