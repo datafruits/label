@@ -109,6 +109,15 @@ h1 {
   text-shadow:5px 5px 2px #000000;
 }
 
+a {
+  color:white;
+  text-decoration:none;
+}
+
+a:hover {
+  text-decoration:underline;
+}
+
 li {
   list-style:none;
 }
@@ -129,6 +138,13 @@ li {
   position: absolute;
   right:100px;
   top:75px;
+}
+
+#download {
+  position: absolute;
+  left:100px;
+  top:200px;
+  font-size:50px;
 }
 
 /* ==========================================================================

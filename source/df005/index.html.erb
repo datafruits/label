@@ -24,7 +24,7 @@
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
 
-        <h1 id="title">HYPERFRUIT</h1>
+        <h1 id="title" class="shiny">HYPERFRUIT</h1>
         <div id="tracks">
           <ul>
             <% settings.df005.each do |track| %>
@@ -35,6 +35,9 @@
               </li>
             <% end %>
           </ul>
+        </div>
+        <div id="download">
+          <a id="download-link" href="https://s3.amazonaws.com/DF005/DF005.zip">ZIP DOWNLOAD</a>
         </div>
         <div id="social">
           <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://releases.datafruits.fm/df005" data-via="datafruits" data-hashtags="hyperfruit">Tweet</a>
