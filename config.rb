@@ -84,6 +84,27 @@ set :df005, [
    :image => "https://s3.amazonaws.com/DF005/img/efm.jpg"}
 ]
 
+set :df006, [
+  {:num => "01",
+   :track => "herokkin remix",
+   :mp3 => "01_DooDaDoo_Herokkin-Remix.mp3"},
+  {:num => "02",
+   :track => "DJ DAI remix",
+   :mp3 => "02_DooDaDoo_DJ-DAI-REMIX.mp3"},
+  {:num => "03",
+   :track => "firedrill remix",
+   :mp3 => "03_DooDaDoo_firedrill-remix.mp3"},
+  {:num => "04",
+   :track => "ovenrake remix",
+   :mp3 => "04_DooDaDoo_ovenrake-remix.mp3"},
+  {:num => "05",
+   :track => "seacuke remix",
+   :mp3 => "05_DooDaDoo_seacuke-remix.mp3"},
+  {:num => "06",
+   :track => "dj nameko edit",
+   :mp3 => "06_DooDaDoo_dj-nameko-edit.mp3"}
+]
+
 ###
 # Compass
 ###

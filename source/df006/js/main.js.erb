@@ -1,0 +1,45 @@
+$(document).ready(function(){
+  <% settings.df006.each do |track| %>
+    $("#track-player-<%=track[:num]%>").jPlayer({
+      ready: function () {
+        $(this).jPlayer("setMedia", {
+          mp3: "https://s3.amazonaws.com/DF006/<%="#{track[:mp3]}"%>"
+        });
+      },
+      swfPath: "/hyperfruit/js/vendor",
+      preload: "none",
+      supplied: "mp3",
+      wmode: "window",
+      solution: "html, flash",
+      cssSelectorAncestor: "#jp-interface-<%=track[:num]%>",
+      ended: function(){
+        <% if track[:num].to_i < tracks.length %>
+          $("#track-player-<%=sprintf("%02i",track[:num].to_i+1)%>").jPlayer("play");
+        <% end %>
+      },
+      play: function(){
+        console.log('play...');
+        console.log("<%=track[:image]%>");
+        $(".image").css("background-image", "url(<%=track[:image]%>)");
+      },
+    }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
+      $(this).jPlayer("pauseOthers");                                                                                             
+    });
+  <% end %>
+
+  $('.rainbow').rainbow({ 
+      colors: [
+          '#FF0000',
+          '#f26522',
+          '#fff200',
+          '#00a651',
+          '#28abe2',
+          '#2e3192',
+          '#6868ff'
+      ],
+      animate: true,
+      animateInterval: 100,
+      pad: false,
+      pauseLength: 100,
+  });
+});
