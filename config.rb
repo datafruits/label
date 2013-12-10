@@ -105,6 +105,22 @@ set :df006, [
    :mp3 => "06_DooDaDoo_dj-nameko-edit.mp3"}
 ]
 
+set :df007, [
+  {:num => "01",
+   :track => "falling girl",
+   :mp3 => "01_falling_girl.mp3"},
+  {:num => "02",
+   :track => "cute garage",
+   :title => "cute garage",
+   :mp3 => "02_cute_garage.mp3"},
+  {:num => "03",
+   :track => "immi - local train (last train remix)",
+   :mp3 => "03_local_train_last_train_remix.mp3"},
+   {:num => "04",
+    :track => "owatta",
+    :mp3 => "04_owatta.mp3"}
+]
+
 ###
 # Compass
 ###
