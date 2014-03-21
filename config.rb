@@ -121,6 +121,38 @@ set :df007, [
     :mp3 => "04_owatta.mp3"}
 ]
 
+set :df008, [
+  {:num => "01",
+   :track => "firedrill - freaky freestyley cafe",
+   :mp3 => ""},
+  {:num => "02",
+   :track => "ovenrake - Funkfreak'fterhoursmix",
+   :mp3 => ""},
+  {:num => "03",
+   :track => "kosmo kat - loving tony is like a pineapple heaven",
+   :mp3 => ""},
+  {:num => "04",
+   :track => "goto80 - vatican power loop",
+   :mp3 => ""},
+  {:num => "05",
+   :track => "smoked meat fax machine - shut it down",
+   :mp3 => ""},
+  {:num => "06",
+   :track => "dr vector - fresh 89",
+   :mp3 => ""},
+  {:num => "07",
+   :track => "herokkin - bits are bits",
+   :mp3 => ""},
+  {:num => "08",
+   :track => "ghost colours - People (Soopa Mix)",
+   :mp3 => ""},
+  {:num => "09",
+   :track => "uzzlang pistol - PASTEL女の子",
+   :mp3 => ""},
+  {:num => "10",
+   :track => "urabukki - sunset vibes",
+   :mp3 => ""},
+]
 ###
 # Compass
 ###
