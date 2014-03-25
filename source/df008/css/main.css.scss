@@ -152,7 +152,6 @@ $blue: #47ffec;
 
 body {
   font-size:18px;
-  font-family:Cursive;
 }
 
 .stripes {
@@ -163,7 +162,7 @@ body {
   background-image: url('/df008/img/yotsuya_at_night.jpg');
 }
 
-a {
+/* a {
   color: $yellow;
   background-color: $blue;
 }
@@ -171,7 +170,7 @@ a {
 a:hover {
   color: $blue;
   background-color: $yellow;
-}
+} */
 
 #spiraly {
   @include animation(spinny 3s linear infinite);
@@ -193,7 +192,7 @@ a:hover {
 
 #blue-zolo {
   position: absolute;
-  top: 379px;
+  top: 240px;
   left: 246px;
   box-shadow: 3px 3px 0px rgba(0,0,0,1), 7px 7px 0px rgba(0,0,0,1);
 }
@@ -224,6 +223,34 @@ h1 {
   text-shadow: 0 0 5px #ff99de, 0 0 10px #ff99de, 0 0 15px #ff99de, 0 0 20px #ff00de, 0 0 30px #ff00de, 0 0 40px #ff00de;
 }
 
+ul {
+  list-style:none;
+}
+
+#download {
+  position: absolute;
+  top:0;
+  left:300px;
+}
+
+#download-link:hover {
+  font-size:120%;
+}
+
+#download-link {
+  font-family: 'Lily Script One', cursive;
+  color: #fff;
+  text-shadow: 3px 3px 0px rgba(0,0,0,1), 7px 7px 0px rgba(0,0,0,1);
+  text-decoration: none;
+  @include transition-property (transform);
+  @include transition-duration(1.0s);
+  @include transition-timing-function(ease-in);
+  @include transition-delay(0.5s);
+}
+
+section {
+  padding: 5px;
+}
 
 
 /* ==========================================================================

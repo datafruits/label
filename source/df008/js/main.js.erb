@@ -7,16 +7,21 @@ function nightTime(night){
 
     $('#funky').addClass('neon');
     $('#freaky').addClass('neon');
+    $('#download-link').addClass('neon');
 
     $('#spiraly').attr('src', '/df008/img/zolos/spiraly_blu.png');
+
+    $('body').css('color', 'white');
   }else{
     $('body').addClass('stripes');
     $('body').removeClass('night-time');
 
     $('#funky').removeClass('neon');
     $('#freaky').removeClass('neon');
+    $('#download-link').removeClass('neon');
 
     $('#spiraly').attr('src', '/df008/img/zolos/spiraly.png');
+    $('body').css('color', 'black');
   }
 }
 
@@ -59,5 +64,9 @@ $(function() {
   var easter_egg = new Konami(function() {
     alert('Konami code!')
   });
+
+  $("#yellow").draggable();
+  $("#pink-zolo").draggable();
+  $("#blue-zolo").draggable();
 
 });
