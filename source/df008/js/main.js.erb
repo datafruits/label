@@ -1,0 +1,63 @@
+var night = false;
+
+function nightTime(night){
+  if(night){
+    $('body').removeClass('stripes');
+    $('body').addClass('night-time');
+
+    $('#funky').addClass('neon');
+    $('#freaky').addClass('neon');
+
+    $('#spiraly').attr('src', '/df008/img/zolos/spiraly_blu.png');
+  }else{
+    $('body').addClass('stripes');
+    $('body').removeClass('night-time');
+
+    $('#funky').removeClass('neon');
+    $('#freaky').removeClass('neon');
+
+    $('#spiraly').attr('src', '/df008/img/zolos/spiraly.png');
+  }
+}
+
+$('#spiraly').on('click', function(){
+  night = !night;
+  nightTime(night);
+});
+
+$(function() {
+  <% settings.df008.each do |track| %>
+    $("#track-player-<%=track[:num]%>").jPlayer({
+      ready: function () {
+        $(this).jPlayer("setMedia", {
+          mp3: "https://s3.amazonaws.com/DF008/<%="#{track[:mp3]}"%>"
+        });
+      },
+      swfPath: "/hyperfruit/js/vendor",
+      preload: "none",
+      supplied: "mp3",
+      wmode: "window",
+      solution: "html, flash",
+      cssSelectorAncestor: "#jp-interface-<%=track[:num]%>",
+      ended: function(){
+        <% if track[:num].to_i < tracks.length %>
+          $("#track-player-<%=sprintf("%02i",track[:num].to_i+1)%>").jPlayer("play");
+        <% end %>
+      },
+      play: function(){
+        console.log('play...');
+        console.log("<%=track[:image]%>");
+        $(".image").css("background-image", "url(<%=track[:image]%>)");
+      },
+    }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.
+      $(this).jPlayer("pauseOthers");
+    });
+  <% end %>
+
+  nightTime(false);
+
+  var easter_egg = new Konami(function() {
+    alert('Konami code!')
+  });
+
+});
