@@ -22,8 +22,8 @@ $(document).ready(function(){
         console.log("<%=track[:image]%>");
         $(".image").css("background-image", "url(<%=track[:image]%>)");
       },
-    }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
-      $(this).jPlayer("pauseOthers");                                                                                             
+    }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.
+      $(this).jPlayer("pauseOthers");
     });
   <% end %>
 
