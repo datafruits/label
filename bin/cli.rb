@@ -13,7 +13,7 @@ class NewRelease < Thor::Group
     name = sprintf("df%03i", n)
     @new_dir = "./source/#{name}"
     Dir.mkdir @new_dir
-    html = "#{@new_dir}/index.html"
+    html = "#{@new_dir}/index.html.erb"
     copy_file("template/index.tt", html)
     gsub_file html, 'RELEASE_NAME', name
   end
