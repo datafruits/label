@@ -153,6 +153,59 @@ set :df008, [
    :track => "urabukki - sunset vibes",
    :mp3 => "10_urabukki_sunset-vibes.mp3"},
 ]
+
+set :df009, [
+  {
+    num: '01',
+    track: 'FBEM',
+    mp3: '01_FBEM.mp3'
+  },
+  {
+    num: '02',
+    track: 'AJIHA',
+    mp3: '02_AJIHA.mp3'
+  },
+  {
+    num: '03',
+    track: 'D0GEZ00',
+    mp3: '03_D0GEZ00.mp3'
+  },
+  {
+    num: '04',
+    track: 'H2USE',
+    mp3: '04_H2USE.mp3'
+  },
+  {
+    num: '05',
+    track: 'D1MBEM',
+    mp3: '05_D1MBEM.mp3'
+  },
+  {
+    num: '06',
+    track: 'FBEM (track)',
+    mp3: '06_FBEM_(track).mp3'
+  },
+  {
+    num: '07',
+    track: 'AJIHA (track)',
+    mp3: '07_AJIHA_(track).mp3'
+  },
+  {
+    num: '08',
+    track: 'D0GEZ00 (track)',
+    mp3: '08_D0GEZ00_(track).mp3'
+  },
+  {
+    num: '09',
+    track: 'H2USE (track)',
+    mp3: '09_H2USE_(track).mp3'
+  },
+  {
+    num: '10',
+    track: 'D1MBEM (track)',
+    mp3: '10_D1MBEM_(track).mp3'
+  },
+]
 ###
 # Compass
 ###
