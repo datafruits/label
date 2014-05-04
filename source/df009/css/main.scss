@@ -175,14 +175,14 @@ section {
   position:absolute;
   bottom:10px;
   left:300px;
-  background-image:url('/df009/img/grimacing.png');
+  background-image:url('/df009/img/airhorn_off.gif');
   background-repeat:no-repeat;
-  width:128px;
-  height:128px;
+  width:256px;
+  height:192px;
 }
 
 #airhorn:hover {
-  background-image:url('/df009/img/dizzy_face.png');
+  background-image:url('/df009/img/airhorn_on.gif');
   cursor:pointer;
 }
 

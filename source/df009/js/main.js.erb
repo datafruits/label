@@ -7,7 +7,7 @@ function getRandomInt(min, max) {
 
 function airhorn(){
   var audio = document.createElement("audio");
-  audio.src = "/df009/horn.wav";
+  audio.src = "https://s3.amazonaws.com/datafruits.fm/horn.wav";
   audio.addEventListener("ended", function () {
       document.removeChild(this);
   }, false);
