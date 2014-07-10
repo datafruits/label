@@ -1,0 +1,67 @@
+function pause_or_play(){
+  var isPaused = $("#track-player").data().jPlayer.status.paused;
+  if(isPaused) {
+    $("#track-player").jPlayer('play');
+    $("#record").css('animation-play-state', 'running');
+  } else {
+    $("#track-player").jPlayer('pause');
+    $("#record").css('animation-play-state', 'paused');
+  }
+}
+
+function flip(){
+  if(currentTrack == track01) {
+    $("#track-player").jPlayer('pause');
+    $("#track-player").jPlayer('setMedia', {mp3: track02});
+    $("#track-player").jPlayer('play');
+    $("#record img").attr('src', sideB);
+    currentTrack = track02;
+  }else if(currentTrack == track02) {
+    $("#track-player").jPlayer('pause');
+    $("#track-player").jPlayer('setMedia', {mp3: track01});
+    $("#track-player").jPlayer('play');
+    currentTrack = track01;
+    $("#record img").attr('src', sideA);
+  }
+  //$(".flip-container").toggleClass("flip")
+}
+
+<% settings.df010.each do |track| %>
+  var track<%=track[:num]%> = "https://s3.amazonaws.com/DF010/<%="#{track[:mp3]}"%>";
+<% end %>
+
+var sideA = "/df010/img/whitelabel_A.jpg";
+var sideB = "/df010/img/whitelabel_B.jpg";
+
+var currentTrack = track01;
+
+$(document).ready(function(){
+  $("#track-player").jPlayer({
+    ready: function () {
+      $(this).jPlayer("setMedia", {
+        mp3: currentTrack
+      });
+      $(this).jPlayer('play');
+    },
+    swfPath: "/hyperfruit/js/vendor",
+    preload: "none",
+    supplied: "mp3",
+    wmode: "window",
+    solution: "html, flash",
+    ended: function(){
+    },
+    play: function(){
+    },
+  }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.
+    $(this).jPlayer("pauseOthers");
+  });
+
+  $("#record img").click(function(e) {
+    console.log('wat');
+    pause_or_play();
+  });
+
+  $("#flipper").click(function(e) {
+    flip();
+  });
+});

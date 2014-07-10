@@ -206,6 +206,19 @@ set :df009, [
     mp3: '10_D1MBEM_(track).mp3'
   },
 ]
+
+set :df010, [
+  {
+    num: '01',
+    track: 'X-O (Pete Ellison Remix)',
+    mp3: '01_X-O_(Pete_Ellison_Remix).mp3'
+  },
+  {
+    num: '02',
+    track: 'Midnight Confusion (Firedirll Remix)',
+    mp3: '02_Midnight_Confusion_(Firedrill_Remix).mp3'
+  },
+]
 ###
 # Compass
 ###
