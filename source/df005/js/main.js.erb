@@ -5,7 +5,7 @@
         mp3: "https://s3.amazonaws.com/DF005/<%="#{track[:mp3]}"%>"
       });
     },
-    swfPath: "/hyperfruit/js/vendor",
+    swfPath: "/js/vendor",
     preload: "none",
     supplied: "mp3",
     wmode: "window",
@@ -21,8 +21,8 @@
       console.log("<%=track[:image]%>");
       $(".image").css("background-image", "url(<%=track[:image]%>)");
     },
-  }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
-    $(this).jPlayer("pauseOthers");                                                                                             
+  }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.
+    $(this).jPlayer("pauseOthers");
   });
 <% end %>
 
