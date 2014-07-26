@@ -219,6 +219,39 @@ set :df010, [
     mp3: '02_Midnight_Confusion_(Firedrill_Remix).mp3'
   },
 ]
+
+set :df011, [
+  {
+    num: '01',
+    track: 'Lumberjack 2 The Sound (Side A)',
+    mp3: '01 Lumberjack 2 The Sound (Side A).mp3',
+  },
+  {
+    num: '02',
+    track: 'Who Bootlegged',
+    mp3: '02 Who Bootlegged_.mp3',
+  },
+  {
+    num: '03',
+    track: 'My Ting-A-Ling',
+    mp3: '03 My Ting-A-Ling.mp3',
+  },
+  {
+    num: '04',
+    track: 'Repeat Pete Pete',
+    mp3: '04 Repeat Pete Pete.mp3',
+  },
+  {
+    num: '05',
+    track: 'Lumberjack 2 The Sound (Side B)',
+    mp3: '05 Lumberjack 2 The Sound (Side B).mp3',
+  },
+  {
+    num: '06',
+    track: 'Firedrill - Cute Garage (Pete Ellison Remix)',
+    mp3: '06 Cute Garage (Pete Ellison Remix).mp3',
+  },
+]
 ###
 # Compass
 ###
