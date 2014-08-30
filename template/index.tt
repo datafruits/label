@@ -27,7 +27,7 @@
                   <li>
                     <div id="track-player-<%=track[:num]%>">
                     </div>
-                    <%= partial :player_controls, :locals => {:track => track[:track], :num=>track[:num],:mp3 => track[:mp3] } %>
+                    <%= partial 'layouts/player_controls', :locals => {:track => track[:track], :num=>track[:num],:mp3 => track[:mp3] } %>
                   </li>
                 <% end %>
               </ul>
