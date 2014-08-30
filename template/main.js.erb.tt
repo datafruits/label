@@ -6,7 +6,7 @@ $(document).ready(function(){
           mp3: "https://s3.amazonaws.com/RELEASE_NAME/<%="#{track[:mp3]}"%>"
         });
       },
-      swfPath: "/hyperfruit/js/vendor",
+      swfPath: "/js/vendor",
       preload: "none",
       supplied: "mp3",
       wmode: "window",
