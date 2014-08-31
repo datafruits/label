@@ -252,6 +252,29 @@ set :df011, [
     mp3: '06 Cute Garage (Pete Ellison Remix).mp3',
   },
 ]
+
+set :df012, [
+  {
+    num: '01',
+    track: 'INDIADUB',
+    mp3: '01_INDIADUB-ovenrake.mp3',
+  },
+  {
+    num: '02',
+    mp3: '02_PROGDUB-ovenrake.mp3',
+    track: 'PROGDUB',
+  },
+  {
+    num: '03',
+    mp3: '03_HORRORDUB-ovenrake.mp3',
+    track: 'HORRORDUB',
+  },
+  {
+    num: '04',
+    track: 'DEADDUB(m00nt0ne edit)',
+    mp3: '04_DEADDUB-ovenrake(m00nt0ne edit).mp3',
+  },
+]
 ###
 # Compass
 ###
