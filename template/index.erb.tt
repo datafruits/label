@@ -58,5 +58,6 @@
         <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
         <script src="/js/vendor/jquery.jplayer.min.js"></script>
         <script src="/RELEASE_NAME/js/main.js"></script>
+        <%= partial 'layouts/ga' %>
     </body>
 </html>
