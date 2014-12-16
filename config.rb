@@ -276,6 +276,39 @@ set :df012, [
   },
 ]
 
+set :df014, [
+  {
+    num: '01',
+    track: 'Wau (Original Club Mix)',
+    mp3: '01_seacuke_wau_original_club_mix.mp3'
+  },
+  {
+    num: '02',
+    track: 'Wau (Firedrill Melody Mix)',
+    mp3: '02_seacuke_wau_firedrill_melody_mix.mp3'
+  },
+  {
+    num: '03',
+    track: 'Wau (Deep Wau Mix)',
+    mp3: '03_seacuke_wau_deep_wau_mix.mp3'
+  },
+  {
+    num: '04',
+    track: 'Wau (Amps Remix)',
+    mp3: '04_seacuke_wau_amps_remix.mp3'
+  },
+  {
+    num: '05',
+    track: 'Wau (Pete Ellison Remix)',
+    mp3: '05_seacuke_wau_pete_ellison_remix.mp3'
+  },
+  {
+    num: '06',
+    track: 'Wau (California Games 160 Edit)',
+    mp3: '06_seacuke_wau_california_games_160_edit.mp3'
+  },
+]
+
 ###
 # Compass
 ###

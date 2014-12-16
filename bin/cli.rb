@@ -14,7 +14,7 @@ class NewRelease < Thor::Group
     @new_dir = "./source/#{name}"
     Dir.mkdir @new_dir
     html = "#{@new_dir}/index.html.erb"
-    copy_file("template/index.tt", html)
+    copy_file("template/index.erb.tt", html)
     gsub_file html, 'RELEASE_NAME', name
   end
 
