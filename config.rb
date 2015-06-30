@@ -309,6 +309,59 @@ set :df014, [
   },
 ]
 
+set :df015, [
+  {
+    num: '01',
+    track: 'Hundredandtoo',
+    mp3: '01_peaches_the_wale_hundredandtoo.mp3'
+  },
+  {
+    num: '02',
+    track: 'Magical Girl',
+    mp3: '02_peaches_the_wale_magical_girl.mp3'
+  },
+  {
+    num: '03',
+    track: 'Family (Dad Knows Best Juke Edit)',
+    mp3: '03_peaches_the_wale_family_dad_knows_best_juke_edit.mp3'
+  },
+  {
+    num: '04',
+    track: 'I Know (Peaches Breaks Edit)',
+    mp3: '04_peaches_the_wale_i_know_peaches_breaks_edit.mp3'
+  },
+  {
+    num: '05',
+    track: 'Pon de Waves',
+    mp3: '05_peaches_the_wale_pon_de_waves.mp3'
+  },
+  {
+    num: '06',
+    track: 'Junglesea Flukework',
+    mp3: '06_peaches_the_wale_junglesea_flukework.mp3'
+  },
+  {
+    num: '07',
+    track: 'Kpopped Collars',
+    mp3: '07_peaches_the_wale_kpopped_collars.mp3'
+  },
+  {
+    num: '08',
+    track: 'Magical Girl (california games remix)',
+    mp3: '08_peaches_the_wale_magical_girl_california_games_remix.mp3'
+  },
+  {
+    num: '09',
+    track: 'Magical Girl (firedrill remix)',
+    mp3: '09_peaches_the_wale_magical_girl_firedrill_remix.mp3'
+  },
+  {
+    num: '10',
+    track: 'Hundredandtoo (melt unit remix)',
+    mp3: '10_peaches_the_wale_hundredandtoo_melt_unit_remix.mp3'
+  },
+]
+
 ###
 # Compass
 ###
