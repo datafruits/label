@@ -362,6 +362,54 @@ set :df015, [
   },
 ]
 
+set :df020, [
+  {
+    num: '01',
+    track: 'FIREDRILL',
+    mp3: '01_firedrill_club_nap_original.mp3'
+  },
+  {
+    num: '02',
+    track: 'DJ NHK GUY',
+    mp3: '02_firedrill_club_nap_dj_nhk_guy_remix.mp3'
+  },
+  {
+    num: '03',
+    track: 'FORK & KNIFE',
+    mp3: '03_firedrill_club_nap_fork_and_knife_remix.mp3'
+  },
+  {
+    num: '04',
+    track: 'YUMEKA',
+    mp3: '04_firedrill_club_nap_yumeka_ghetto_edit.mp3'
+  },
+  {
+    num: '05',
+    track: 'GORO',
+    mp3: '05_firedrill_club_nap_goro_remix.mp3'
+  },
+  {
+    num: '06',
+    track: "FIREDRILL'S REALLY SLEEPY VIP",
+    mp3: '06_firedrill_club_nap_really_sleepy_vip.mp3'
+  },
+  {
+    num: '07',
+    track: '7777777',
+    mp3: '07_firedrill_club_nap_7777777_remix.mp3'
+  },
+  {
+    num: '08',
+    track: 'MONDAY STUDIO',
+    mp3: '08_firedrill_club_nap_mondaystudio_remix.mp3'
+  },
+  {
+    num: '09',
+    track: 'YOSHINO YOSHIKAWA',
+    mp3: '09_firedrill_club_nap_yoshino_yoshikawa_remix.mp3'
+  }
+]
+
 ###
 # Compass
 ###
