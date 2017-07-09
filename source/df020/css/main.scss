@@ -102,6 +102,8 @@ body {
   font-family: Comic Sans MS;
   background: #00a9ed;
   background: linear-gradient(to bottom, #207cca 0%,#207cca 57%,#ffffff 64%,#7a75ad 73%,#7a75ad 82%,#c1d811 86%,#0b9442 91%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background-image: url("/df020/img/takeanap.gif");
+  background-repeat: repeat;
   color: #fef102;
   height: 100vh;
 }
@@ -143,6 +145,8 @@ section {
   border: 3px #fef102 dashed;
   margin-bottom: 10px;
   transform: rotate(-4deg);
+  background: #00a9ed;
+  background: linear-gradient(to bottom, #207cca 0%,#207cca 57%,#ffffff 64%,#7a75ad 73%,#7a75ad 82%,#c1d811 86%,#0b9442 91%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
 .track-title {
