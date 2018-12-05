@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.3.4"
+ruby "2.5.3"
 
 gem "middleman", "~> 3.3.3"
 gem "puma"
