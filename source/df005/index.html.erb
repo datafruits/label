@@ -27,7 +27,7 @@
         <h1 id="title" class="shiny">HYPERFRUIT</h1>
         <div id="tracks">
           <ul>
-            <% config[:df005].each do |track| %>
+            <% settings.df005.each do |track| %>
               <li>
                 <div id="track-player-<%=track[:num]%>">
                 </div>
@@ -73,12 +73,12 @@
                 }
               }
               preload(
-                <% config[:df005].each do |track| %>
-                  <% if track != config[:df005].last %>
-                    "<%=track[:image]%>",
+                <% settings.df005.each do |track| %>
+                  <% if track != settings.df005.last %>
+                    "<%=track[:image]%>",   
                   <% else %>
                     "<%=track[:image]%>"
-                  <% end %>
+                  <% end %> 
                 <% end %>
               )
             //--><!]]>
