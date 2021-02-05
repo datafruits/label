@@ -1,4 +1,3 @@
-@import "bourbon/bourbon";
 /*
  *= require normalize
  *= require jplayer
@@ -134,7 +133,7 @@ li {
 
 section#download:hover {
   transition:0.5s;
-  @include transform(rotate(360deg));
+  transform: rotate(360deg);
 }
 
 section {
