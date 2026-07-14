@@ -9,6 +9,7 @@
   "scripts": {
     "build:ssg": "node scripts/build-ssg.js",
     "build:gitlab": "OUTPUT_DIR=public PRESERVE_OUTPUT=1 node scripts/build-ssg.js",
+    "build:netlify": "OUTPUT_DIR=build PRESERVE_OUTPUT=1 node scripts/build-ssg.js",
     "start": "node server.js",
     "dev": "node server.js"
   }
