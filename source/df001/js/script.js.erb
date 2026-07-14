@@ -1,0 +1,29 @@
+<% settings.tracks.each do |track| %>
+  $("#track-player-<%=track[:num]%>").jPlayer({
+    ready: function () {
+      $(this).jPlayer("setMedia", {
+        mp3: "https://s3.amazonaws.com/DF001/<%="#{track[:mp3]}"%>"
+      });
+    },
+    swfPath: "/df001/js/libs",
+    supplied: "mp3",
+    wmode: "window",
+    solution: "html, flash",
+    cssSelectorAncestor: "#jp-interface-<%=track[:num]%>"
+  }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.                        
+    $(this).jPlayer("pauseOthers");                                                                                             
+  });
+<% end %>
+
+var burger_tag = ["MINI","BURGER","TIME", "!!!","♡✰☁☼✿"];
+var burger_counter = 0;
+
+setInterval(function() {
+  $(".circle p").each(function() {
+    $(this).html(burger_tag[burger_counter]);
+  });
+  burger_counter++;
+  if(burger_counter > burger_tag.length-1){
+    burger_counter=0;
+  }
+}, 100);

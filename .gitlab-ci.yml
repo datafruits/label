@@ -1,16 +1,37 @@
-image: node:22
-
 stages:
+  - build
   - deploy
 
+build_legacy_releases:
+  image: ruby:2.7.1
+  stage: build
+  before_script:
+    - gem install bundler -v 1.17.3
+    - bundle _1.17.3_ install --jobs 4 --retry 3
+  script:
+    - bundle _1.17.3_ exec middleman build
+  artifacts:
+    paths:
+      - build
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+
 pages:
+  image: node:22
   stage: deploy
+  needs:
+    - job: build_legacy_releases
+      artifacts: true
   variables:
     OUTPUT_DIR: public
     PRESERVE_OUTPUT: "1"
     PUBLIC_ORIGIN: "https://releases.datafruits.fm"
     PAGES_CNAME: "releases.datafruits.fm"
   script:
+    - mkdir -p public
+    - cp -R build/. public/
     - npm run build:gitlab
   artifacts:
     paths:

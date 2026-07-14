@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>DF008 - FUNKY FREAKY FREESTYLEY</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link href='http://fonts.googleapis.com/css?family=Lily+Script+One' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/df008/css/normalize.css">
+        <link rel="stylesheet" href="/df008/css/jplayer.css">
+        <link rel="stylesheet" href="/df008/css/main.css">
+        <script src="js/vendor/modernizr-2.6.1.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+
+        <!-- Add your site or application content here -->
+        <section id="social">
+          <a href="https://twitter.com/share" class="twitter-share-button" data-via="datafruits" data-size="large" data-hashtags="fff">Tweet</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          <div id="fb-root"></div>
+          <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));</script>
+          <div class="fb-like" data-href="http://releases.datafruits.fm/df008/" data-layout="button_count" data-action="like" data-show-faces="false" data-width="50" data-share="false"></div>
+        </section>
+
+        <section id="download">
+          <a onClick="_gaq.push(['_trackEvent', 'Label', 'ZipDownload', 'DF008-download']);" id="download-link" href="https://s3.amazonaws.com/DF008/DF008.zip">ZIP DOWNLOAD</a>
+        </section>
+
+        <h1 id="funky">funky freaky</h1>
+        <h1 id="freaky">freestyley</h1>
+        <div id="container">
+          <img id="yellow" src="/df008/img/zolos/yellow_rect.png">
+          <img id="pink-zolo" src="/df008/img/zolos/pink_tri.png">
+          <img id="spiraly" src="/df008/img/zolos/spiraly.png">
+          <img id="blue-zolo" src="/df008/img/zolos/blue_rect.png">
+
+          <br />
+        </div>
+
+        <section id="tracks">
+          <ul>
+            <% settings.df008.each do |track| %>
+              <li>
+                <div id="track-player-<%=track[:num]%>">
+                </div>
+                <%= partial :player_controls, :locals => {:track => track[:track], :num=>track[:num],:mp3 => track[:mp3] } %>
+              </li>
+            <% end %>
+          </ul>
+        </section>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+        <script src="/df008/js/vendor/konami.js"></script>
+        <script src="/df008/js/plugins.js"></script>
+        <script src="/js/vendor/jquery.jplayer.min.js"></script>
+        <script src="/df008/js/main.js"></script>
+
+    </body>
+</html>

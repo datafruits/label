@@ -3,3 +3,6 @@ preview-*.png
 patches/
 dist/
 public/
+/.bundle
+/build
+/.sass-cache

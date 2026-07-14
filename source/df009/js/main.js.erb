@@ -1,0 +1,58 @@
+var bgs = ["/df009/img/burgerbuild.gif", "/df009/img/blobwalk.gif", "/df009/img/hotdogtile.gif", "/df009/img/shakadog.gif"];
+var cur_bg = bgs[0];
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function airhorn(){
+  var audio = document.createElement("audio");
+  audio.src = "https://s3.amazonaws.com/datafruits.fm/horn.wav";
+  audio.addEventListener("ended", function () {
+      document.removeChild(this);
+  }, false);
+  audio.play();
+}
+
+function change_bg(){
+  var new_bg = bgs[0];
+  do {
+    new_bg = bgs[getRandomInt(0,bgs.length-1)];
+  } while(cur_bg == new_bg);
+  $('body').css('background-image', 'url('+new_bg+')');
+  cur_bg = new_bg;
+}
+
+$(document).ready(function(){
+  <% settings.df009.each do |track| %>
+    $("#track-player-<%=track[:num]%>").jPlayer({
+      ready: function () {
+        $(this).jPlayer("setMedia", {
+          mp3: "https://s3.amazonaws.com/DF009/<%="#{track[:mp3]}"%>"
+        });
+      },
+      swfPath: "/js/vendor",
+      preload: "none",
+      supplied: "mp3",
+      wmode: "window",
+      solution: "html, flash",
+      cssSelectorAncestor: "#jp-interface-<%=track[:num]%>",
+      ended: function(){
+        <% if track[:num].to_i < tracks.length %>
+          $("#track-player-<%=sprintf("%02i",track[:num].to_i+1)%>").jPlayer("play");
+        <% end %>
+      },
+      play: function(){
+        change_bg();
+      },
+    }).bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.
+      $(this).jPlayer("pauseOthers");
+    });
+  <% end %>
+
+  $('#scene').parallax();
+
+  $('#airhorn').click(function(){
+    airhorn();
+  });
+});
