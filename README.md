@@ -1,6 +1,6 @@
 # DATAFRUITS RELEASES TSV site
 
-Node.js SSR catalog for `https://releases.datafruits.fm/`.
+SSG/SSR catalog for `https://releases.datafruits.fm/`.
 
 ## Run locally
 
@@ -11,6 +11,14 @@ npm run build:ssg
 ```
 
 The generated site is written to `dist/`.
+
+Build the GitLab Pages site:
+
+```sh
+npm run build:gitlab
+```
+
+The generated GitLab Pages files are written to `public/`. If the target repository already has older pages in `public/` (for example `public/df001/`), this build preserves them and only overwrites the current catalog files it owns.
 
 SSR mode:
 
@@ -38,13 +46,13 @@ If the spreadsheet fetch fails at render time, the server falls back to `data/re
 
 `npm run build:ssg` uses the same server-side renderer to write `dist/index.html` with the current spreadsheet data already embedded. The browser still checks the spreadsheet every 60 seconds after load, so visitors can see fresh sheet updates even if the generated HTML is from the last build.
 
-`.github/workflows/deploy-ssg.yml` builds and deploys `dist/` to GitHub Pages:
+`.gitlab-ci.yml` builds and deploys `public/` to GitLab Pages:
 
-- automatically on pushes to `main`
-- hourly via GitHub Actions schedule
-- manually from the workflow's **Run workflow** button
+- automatically on pushes to the default branch
+- from GitLab CI/CD schedules
+- manually from **Build > Pipelines > Run pipeline**
 
-Set GitHub Pages to use **GitHub Actions** as the source. The build writes `dist/CNAME` as `releases.datafruits.fm`; override that with `PAGES_CNAME` if needed.
+The GitLab Pages custom domain should be configured as `releases.datafruits.fm` in **Deploy > Pages**. The build writes `public/CNAME` as `releases.datafruits.fm`; override that with `PAGES_CNAME` if needed.
 
 ## Spreadsheet feed
 
