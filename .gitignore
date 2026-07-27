@@ -6,3 +6,4 @@ public/
 /.bundle
 /build
 /.sass-cache
+/vendor

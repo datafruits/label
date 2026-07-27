@@ -1,4 +1,4 @@
-<% settings.tracks.each do |track| %>
+<% config[:tracks].each do |track| %>
   $("#track-player-<%=track[:num]%>").jPlayer({
     ready: function () {
       $(this).jPlayer("setMedia", {

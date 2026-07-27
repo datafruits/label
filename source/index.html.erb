@@ -6,7 +6,7 @@
     <title>DATAFRUITS RELEASES | Electronic Music Catalog</title>
     <meta
       name="description"
-      content="DATAFRUITSとDATAVEGETABLESのリリースをジャケット、アーティスト、タイトル、発売日から探せる公式カタログ。Google Sheets連携で最新情報を表示。"
+      content="DATAFRUITSとDATAVEGETABLESのリリースをジャケット、アーティスト、タイトル、発売日から探せる公式カタログ。"
     >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="DATAFRUITS">
@@ -79,12 +79,10 @@
         }
       }
     </script>
-    <link rel="stylesheet" href="./styles.css?v=mobile-toolbar-natural">
-    <script>
-      window.DATAFRUITS_TSV_URL = "https://docs.google.com/spreadsheets/d/1Ri22Wj-FmM0lK63KstmzFGFtE5XPIsvwbybxUFW7B_Q/edit?gid=0#gid=0";
-      window.DATAFRUITS_ARTISTS_URL = "https://docs.google.com/spreadsheets/d/1Ri22Wj-FmM0lK63KstmzFGFtE5XPIsvwbybxUFW7B_Q/edit?gid=459498689#gid=459498689&range=B:B";
-    </script>
-    <script type="module" src="./app.js?v=mobile-toolbar-natural"></script>
+    <script type="application/ld+json" id="releaseItemListJson"><%= release_item_list_json(normalized_releases) %></script>
+    <link rel="stylesheet" href="/styles.css">
+    <script type="application/json" id="releaseData"><%= release_data_json %></script>
+    <script type="module" src="/app.js"></script>
   </head>
   <body>
     <header class="masthead">
@@ -116,12 +114,25 @@
 
         <label class="select-box">
           <span>Series</span>
-          <select id="seriesFilter"></select>
+          <select id="seriesFilter">
+            <option value="all">All series</option>
+            <% normalized_releases.map { |release| release[:series] }.uniq.reject(&:empty?).sort.each do |series| %>
+              <option value="<%= escape_html(series) %>"><%= escape_html(series) %></option>
+            <% end %>
+          </select>
         </label>
 
         <label class="select-box">
           <span>Artist</span>
-          <select id="artistFilter"></select>
+          <select id="artistFilter">
+            <option value="all">All artists</option>
+            <% normalized_artists.each_with_index do |entry, index| %>
+              <option value="<%= escape_html(entry[:key]) %>"><%= escape_html(entry[:label]) %></option>
+              <% if index.zero? && entry[:key] == "various artists" && normalized_artists.length > 1 %>
+                <option disabled value="">────────────</option>
+              <% end %>
+            <% end %>
+          </select>
         </label>
 
         <div class="view-toggle" role="group" aria-label="display mode">
@@ -138,10 +149,14 @@
 
       <section class="results-head" aria-live="polite">
         <h2 id="resultsTitle">Releases</h2>
-        <p id="resultsMeta">Waiting for TSV rows.</p>
+        <p id="resultsMeta"><%= normalized_releases.length %> shown / <%= normalized_releases.length %> loaded</p>
       </section>
 
-      <section id="releaseGrid" class="release-grid" aria-label="release list"></section>
+      <section id="releaseGrid" class="release-grid" aria-label="release list">
+        <% normalized_releases.each do |release| %>
+          <%= render_release_card(release) %>
+        <% end %>
+      </section>
       <div id="loadSentinel" class="load-sentinel" hidden aria-live="polite"></div>
 
       <template id="emptyTemplate">

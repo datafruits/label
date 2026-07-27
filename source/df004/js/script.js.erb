@@ -22,7 +22,7 @@ function gems(){
   });
 }
 
-<% settings.df004.each do |track| %>
+<% config[:df004].each do |track| %>
   $("#track-player-<%=track[:num]%>").jPlayer({
     ready: function () {
       $(this).jPlayer("setMedia", {

@@ -26,7 +26,7 @@ function flip(){
   //$(".flip-container").toggleClass("flip")
 }
 
-<% settings.df010.each do |track| %>
+<% config[:df010].each do |track| %>
   var track<%=track[:num]%> = "https://s3.amazonaws.com/DF010/<%="#{track[:mp3]}"%>";
 <% end %>
 

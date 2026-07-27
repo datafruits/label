@@ -1,83 +1,61 @@
-# DATAFRUITS RELEASES TSV site
+# DATAFRUITS RELEASES catalog site
 
-SSG/SSR catalog for `https://releases.datafruits.fm/`.
+Middleman static site for `https://releases.datafruits.fm/`. The release catalog (search, series/artist filters, grid/list view, lazy-loading cards) is baked into `build/index.html` at build time from a YAML snapshot of the DATAFRUITS releases spreadsheet.
 
 ## Run locally
 
-Build the static site:
-
 ```sh
-npm run build:ssg
+bundle install
+bundle exec middleman build
 ```
 
-The generated site is written to `dist/`.
+The generated site is written to `build/`.
 
-Build the GitLab Pages site:
-
-```sh
-npm run build:gitlab
-```
-
-The generated GitLab Pages files are written to `public/`. If the target repository already has older pages in `public/` (for example `public/df001/`), this build preserves them and only overwrites the current catalog files it owns.
-
-SSR mode:
+Local preview server (rebuilds and serves with live reload):
 
 ```sh
-node server.js
+bundle exec middleman server
 ```
 
-Open `http://127.0.0.1:8000/`.
+Open `http://127.0.0.1:4567/`.
 
-Static fallback mode:
+`config.ru`/`Procfile` run the same `bundle exec middleman build` and serve `build/` via Rack for the Heroku deploy.
+
+## Data flow
+
+```
+Google Sheet (TSV export)
+  -> ruby bin/fetch_releases.rb -> data/releases.yml, data/artists.yml (committed)
+  -> bundle exec middleman build -> build/index.html (release cards + embedded JSON baked in)
+```
+
+`data/releases.yml` and `data/artists.yml` are committed snapshots of the spreadsheet, not fetched live. To pick up new releases:
 
 ```sh
-python3 -m http.server 8000
+ruby bin/fetch_releases.rb
+bundle exec middleman build
+git add data/releases.yml data/artists.yml
+git commit -m "Refresh release catalog"
 ```
 
-Open `http://127.0.0.1:8000/`.
+`bin/fetch_releases.rb` reads the same two sheets referenced below and can be pointed at different sheets via `DATAFRUITS_TSV_URL`/`DATAFRUITS_ARTISTS_URL` env vars.
 
-## SEO and SSR
+The `source/index.html.erb` template (via helpers in `config.rb`) computes everything date-dependent — sort order, search text, and the "NEW" badge for releases within the last 180 days — at build time, so a rebuild is all that's needed to refresh those, even without re-running the fetch script. It also embeds the normalized release/artist data as JSON for `source/app.js`, which handles search, filtering, view toggling, and lazy-rendering entirely client-side with no network requests.
 
-`server.js` fetches the Google Sheets TSV on the server, renders release cards into the first HTML response, and injects the same normalized release data for `app.js` to hydrate. This avoids an empty client-only catalog for crawlers while preserving search, filtering, lazy rendering, hover effects, and 60-second refreshes in the browser.
+## Deploys
 
-If the spreadsheet fetch fails at render time, the server falls back to `data/releases.sample.tsv` instead of serving an empty page.
+Four targets all build the same way (`bundle exec middleman build`, no Node involved):
 
-## Static generation
+- **Heroku** — `config.ru`/`Procfile`, Rack serving `build/`.
+- **Netlify** — `netlify.toml`.
+- **GitLab Pages** — `.gitlab-ci.yml`, copies `build/` into `public/`.
+- **GitHub Pages** — `.github/workflows/deploy-ssg.yml`, runs on push to `main`, daily on a schedule, or manually.
 
-`npm run build:ssg` uses the same server-side renderer to write `dist/index.html` with the current spreadsheet data already embedded. The browser still checks the spreadsheet every 60 seconds after load, so visitors can see fresh sheet updates even if the generated HTML is from the last build.
-
-`.gitlab-ci.yml` builds and deploys `public/` to GitLab Pages:
-
-- automatically on pushes to the default branch
-- from GitLab CI/CD schedules
-- manually from **Build > Pipelines > Run pipeline**
-
-The GitLab Pages custom domain should be configured as `releases.datafruits.fm` in **Deploy > Pages**. The build writes `public/CNAME` as `releases.datafruits.fm`; override that with `PAGES_CNAME` if needed.
+The custom domain (`releases.datafruits.fm`) is set via `source/CNAME`, which Middleman copies into `build/CNAME` on every build.
 
 ## Spreadsheet feed
 
-The page streams TSV from a URL. Use either:
-
-```text
-?src=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F...%2Fedit%3Fgid%3D0%23gid%3D0
-```
-
-or set this in `index.html`:
-
-```html
-<script>
-  window.DATAFRUITS_TSV_URL = "https://docs.google.com/spreadsheets/d/.../edit?gid=0#gid=0";
-</script>
-```
-
-For production SSR, the same feed can also be configured with environment variables:
-
-```sh
-DATAFRUITS_TSV_URL="https://docs.google.com/spreadsheets/d/.../edit?gid=0#gid=0" \
-PUBLIC_ORIGIN="https://releases.datafruits.fm" \
-PORT=8000 \
-node server.js
-```
+Releases sheet: `gid=0`. Artist-list sheet: `gid=459498689` (range `B:B`), whose first row named `Sorted Artist` is skipped; `Various Artists` is pinned to the top of the artist filter, followed by a separator, then the rest.
 
 Recommended columns:
 
@@ -85,14 +63,8 @@ Recommended columns:
 catalog ID	artist	title	link	image URL	date	Series	Package	Track List	Credit
 ```
 
-Column aliases are accepted for common names such as `catalog`, `cover`, `artwork`, `jacket`, `image`, `url`, `bandcamp`, `format`, `genre`, `genres`, `released`, and Japanese labels like `品番`, `アーティスト`, `タイトル`, `発売日`, `ジャケット`.
+Column aliases are accepted for common names such as `catalog`, `cover`, `artwork`, `jacket`, `image`, `url`, `bandcamp`, `format`, `genre`, `genres`, `released`, and Japanese labels like `品番`, `アーティスト`, `タイトル`, `発売日`, `ジャケット` (see `HEADER_ALIASES` in `bin/fetch_releases.rb`).
 
 `image URL` should be a public image URL or a relative image path. If it is blank or fails to load, the site renders a generated catalog jacket.
-
-Google Sheets edit URLs are converted to TSV export URLs automatically. The app checks the spreadsheet again every 60 seconds, reads the full TSV feed, then renders the catalog progressively: the first 36 cards appear immediately and more cards are appended as the visitor scrolls. Images use native lazy loading.
-
-Artist filter options are read from the configured artist-list sheet (`window.DATAFRUITS_ARTISTS_URL`). The first row named `Sorted Artist` is skipped. `Various Artists` is pinned under `All artists`, followed by a separator line, then the rest of the artist list.
-
-Releases dated within the last 180 days show `img/new.gif` as the NEW mark.
 
 The masthead also uses a small decorative layer of GIFs from DATAFRUITS wiki pages. Their positions are randomized on each load and move lightly on scroll for a parallax feel.

@@ -1,7 +1,6 @@
 [build]
-  command = "bundle exec middleman build && npm run build:netlify"
+  command = "bundle exec middleman build"
   publish = "build"
 
 [build.environment]
-  NODE_VERSION = "22"
-  RUBY_VERSION = "2.7.1"
+  RUBY_VERSION = "3.3.12"

@@ -3,7 +3,7 @@ name: Build and deploy SSG
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 * * * *"
+    - cron: "17 4 * * *"
   push:
     branches:
       - main
@@ -24,21 +24,22 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          node-version: 22
+          ruby-version: "3.3.12"
+          bundler-cache: true
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Build static site
-        run: npm run build:ssg
+        run: bundle exec middleman build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: build
 
   deploy:
     needs: build
