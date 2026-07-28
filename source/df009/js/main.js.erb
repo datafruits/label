@@ -24,7 +24,7 @@ function change_bg(){
 }
 
 $(document).ready(function(){
-  <% settings.df009.each do |track| %>
+  <% config[:df009].each do |track| %>
     $("#track-player-<%=track[:num]%>").jPlayer({
       ready: function () {
         $(this).jPlayer("setMedia", {
@@ -38,7 +38,7 @@ $(document).ready(function(){
       solution: "html, flash",
       cssSelectorAncestor: "#jp-interface-<%=track[:num]%>",
       ended: function(){
-        <% if track[:num].to_i < tracks.length %>
+        <% if track[:num].to_i < config[:df009].length %>
           $("#track-player-<%=sprintf("%02i",track[:num].to_i+1)%>").jPlayer("play");
         <% end %>
       },

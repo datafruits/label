@@ -1,9 +1,9 @@
 $(document).ready(function(){
-  <% settings.df022.each do |track| %>
+  <% config[:df022].each do |track| %>
     $("#track-player-<%=track[:num]%>").jPlayer({
       ready: function () {
         $(this).jPlayer("setMedia", {
-          mp3: "https://s3.amazonaws.com/df022/<%="#{URI::encode(track[:mp3])}"%>"
+          mp3: "https://s3.amazonaws.com/df022/<%="#{URI::DEFAULT_PARSER.escape(track[:mp3])}"%>"
         });
       },
       swfPath: "/js/vendor",
@@ -13,7 +13,7 @@ $(document).ready(function(){
       solution: "html, flash",
       cssSelectorAncestor: "#jp-interface-<%=track[:num]%>",
       ended: function(){
-        <% if track[:num].to_i < tracks.length %>
+        <% if track[:num].to_i < config[:df022].length %>
           $("#track-player-<%=sprintf("%02i",track[:num].to_i+1)%>").jPlayer("play");
         <% end %>
       },

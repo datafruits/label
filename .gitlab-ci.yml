@@ -1,0 +1,36 @@
+stages:
+  - build
+  - deploy
+
+build_legacy_releases:
+  image: ruby:3.3
+  stage: build
+  before_script:
+    - bundle install --jobs 4 --retry 3
+  script:
+    - bundle exec middleman build
+  artifacts:
+    paths:
+      - build
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+
+pages:
+  image: alpine
+  stage: deploy
+  needs:
+    - job: build_legacy_releases
+      artifacts: true
+  script:
+    - mkdir -p public
+    - cp -R build/. public/
+  artifacts:
+    paths:
+      - public
+  pages: true
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'

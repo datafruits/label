@@ -1,3 +1,6 @@
+require "date"
+require "json"
+
 set :tracks, [
   {:num => "01",
    :track => "01. Firedrill ✰ MINIBURGERTIME (original mix)",
@@ -511,9 +514,225 @@ helpers do
   def reset_cycle
     @_cycle = ["img/burger1.png","img/eggsaladsandwich.png","img/jellyburger.png","img/sloppyjoe.png"]
   end
+
+  DATAFRUITS_FEATURED_WINDOW_DAYS = 180
+
+  # data/releases.yml rows carry only raw sheet fields (see bin/fetch_releases.rb).
+  # Everything derived from "now" (catalog sort order, the NEW badge, search text)
+  # is computed here so it reflects the current build date, not the export date.
+  def normalized_releases
+    @normalized_releases ||= data.releases.to_a.each_with_index
+      .map { |row, index| normalize_release(row, index) }
+      .sort_by { |release| [-release[:catalog_number], -release[:index]] }
+  end
+
+  def normalize_release(row, index)
+    catalog = row["catalog"].to_s
+    artist = row["artist"].to_s
+    title = row["title"].to_s
+    release_date = row["release_date"].to_s
+    tags = Array(row["tags"])
+
+    {
+      id: "#{catalog}-#{index}",
+      index: index,
+      catalog: catalog,
+      catalog_number: catalog[/\d+/].to_i,
+      artist: artist,
+      artist_key: normalize_lookup_value(artist),
+      title: title,
+      release_date: release_date,
+      cover: row["cover"].to_s,
+      url: row["url"].to_s,
+      series: row["series"].to_s,
+      format: row["format"].to_s,
+      tags: tags,
+      description: row["description"].to_s,
+      featured: featured_release?(release_date),
+      search_text: [catalog, artist, title, release_date, row["series"], row["format"],
+                    row["description"], row["tracklist"], row["credit"], *tags].join(" ").downcase,
+    }
+  end
+
+  def normalized_artists
+    entries = []
+    seen = {}
+
+    Array(data.artists).each do |artist|
+      key = normalize_lookup_value(artist)
+      next if key.empty? || key == "sorted artist" || seen[key]
+      seen[key] = true
+      entries << { key: key, label: artist_label(artist) }
+    end
+
+    if entries.empty?
+      normalized_releases.each do |release|
+        key = release[:artist_key]
+        next if key.empty? || seen[key]
+        seen[key] = true
+        entries << { key: key, label: release[:artist] }
+      end
+    end
+
+    various_index = entries.index { |entry| entry[:key] == "various artists" }
+    if various_index && various_index > 0
+      entries.unshift(entries.delete_at(various_index))
+    end
+
+    entries
+  end
+
+  def artist_label(artist)
+    normalize_lookup_value(artist) == "various artists" ? "Various Artists" : artist
+  end
+
+  def normalize_lookup_value(value)
+    value.to_s.unicode_normalize(:nfkc).strip.gsub(/\s+/, " ").downcase
+  end
+
+  def parse_release_date(value)
+    match = value.to_s.strip.match(/\A(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/)
+    return nil unless match
+
+    Date.new(match[1].to_i, match[2].to_i, match[3].to_i)
+  rescue ArgumentError
+    nil
+  end
+
+  def featured_release?(release_date, days = DATAFRUITS_FEATURED_WINDOW_DAYS)
+    date = parse_release_date(release_date)
+    return false unless date
+
+    (Date.today - days..Date.today).cover?(date)
+  end
+
+  def escape_html(value)
+    value.to_s
+      .gsub("&", "&amp;")
+      .gsub("<", "&lt;")
+      .gsub(">", "&gt;")
+      .gsub('"', "&quot;")
+      .gsub("'", "&#039;")
+  end
+
+  def release_cover_hue(release)
+    (release[:catalog].to_s + release[:title].to_s).each_char.sum(&:ord) % 360
+  end
+
+  def release_cover_markup(release)
+    label = escape_html(release[:catalog])
+    fallback = %(<div class="cover-fallback" style="--cover-hue: #{release_cover_hue(release)}"><span>#{label}</span></div>)
+    return fallback if release[:cover].to_s.empty?
+
+    %(<img src="#{escape_html(release[:cover])}" alt="#{escape_html("#{release[:title]} jacket")}" loading="lazy" decoding="async" onerror="this.remove();">#{fallback})
+  end
+
+  def render_tag_list(tags)
+    return "" if tags.nil? || tags.empty?
+
+    items = tags.map { |tag| "<li>#{escape_html(tag)}</li>" }.join
+    %(<ul class="tag-list" aria-label="tags">#{items}</ul>)
+  end
+
+  def render_release_card(release)
+    cover = %(<div class="cover-wrap">#{release_cover_markup(release)}</div>)
+    cover_node = if release[:url].to_s.empty?
+      %(<div class="cover-static">#{cover}</div>)
+    else
+      %(<a class="cover-link" href="#{escape_html(release[:url])}" target="_blank" rel="noopener noreferrer" aria-label="Open #{escape_html(release[:title])} in a new tab" title="Open release in a new tab">#{cover}</a>)
+    end
+    new_mark = release[:featured] ? '<img class="new-mark" src="/img/new.gif" alt="NEW" width="76" height="32">' : ""
+    date = release[:release_date].to_s.empty? ? '<span aria-hidden="true">&nbsp;</span>' : "<span>#{escape_html(release[:release_date])}</span>"
+    format = release[:format].to_s.empty? ? "" : "<span>#{escape_html(release[:format])}</span>"
+    detail = [date, format].reject { |item| item.strip.empty? }.join(" / ")
+    description = release[:description].to_s.empty? ? "" : %(<p class="release-detail">#{escape_html(release[:description])}</p>)
+    series_pill = release[:series].to_s.empty? ? "" : %(<span class="pill">#{escape_html(release[:series])}</span>)
+
+    <<~HTML
+      <article class="release-card">
+        #{cover_node}
+        <div class="release-body">
+          <div class="meta-line">
+            <span class="catalog-code">#{escape_html(release[:catalog])}</span>
+            #{series_pill}
+            #{new_mark}
+          </div>
+          <h2>#{escape_html(release[:title])}</h2>
+          <p class="release-artist">#{escape_html(release[:artist])}</p>
+          <p class="release-detail">#{detail}</p>
+          #{description}
+          #{render_tag_list(release[:tags])}
+        </div>
+      </article>
+    HTML
+  end
+
+  def releases_payload
+    normalized_releases.map do |release|
+      {
+        id: release[:id],
+        index: release[:index],
+        catalog: release[:catalog],
+        catalogNumber: release[:catalog_number],
+        artist: release[:artist],
+        artistKey: release[:artist_key],
+        title: release[:title],
+        releaseDate: release[:release_date],
+        cover: release[:cover],
+        url: release[:url],
+        series: release[:series],
+        format: release[:format],
+        tags: release[:tags],
+        description: release[:description],
+        featured: release[:featured],
+        searchText: release[:search_text],
+      }
+    end
+  end
+
+  def artists_payload
+    normalized_artists
+  end
+
+  def release_data_json
+    escape_json_for_html(releases: releases_payload, artists: artists_payload)
+  end
+
+  def release_item_list_json(releases)
+    payload = {
+      "@context" => "https://schema.org",
+      "@type" => "ItemList",
+      "name" => "DATAFRUITS RELEASES catalog",
+      "itemListElement" => releases.each_with_index.map do |release, position|
+        {
+          "@type" => "ListItem",
+          "position" => position + 1,
+          "item" => {
+            "@type" => "MusicAlbum",
+            "name" => release[:title],
+            "byArtist" => { "@type" => "MusicGroup", "name" => release[:artist] },
+            "datePublished" => parse_release_date(release[:release_date])&.strftime("%Y-%m-%d"),
+            "identifier" => release[:catalog],
+            "image" => release[:cover].to_s.empty? ? nil : release[:cover],
+            "url" => release[:url].to_s.empty? ? "https://releases.datafruits.fm/##{escape_html(release[:catalog])}" : release[:url],
+          }.compact,
+        }
+      end,
+    }
+    escape_json_for_html(payload)
+  end
+
+  def escape_json_for_html(value)
+    JSON.generate(value).gsub("<", '\\u003c')
+  end
 end
 
 set :css_dir, 'css'
+
+# The df0xx legacy release pages mostly don't vendor their own copy of
+# Bourbon/Neat and instead `@import 'bourbon/bourbon'` expecting the shared
+# copy at source/css/bourbon to be on the Sass load path.
+set :sass_assets_paths, [File.join(root, "source", "css")]
 
 set :js_dir, 'js'
 
@@ -522,8 +741,6 @@ set :images_dir, 'img'
 activate :directory_indexes
 
 set :build_dir, "build"
-
-activate :sprockets
 
 # Build-specific configuration
 configure :build do
