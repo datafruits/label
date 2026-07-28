@@ -527,7 +527,7 @@
   artist: HOMEBODEE
   title: SNOW SNEAKMEN
   release_date: ''
-  cover: ''
+  cover: "/df034/img/snow-sneakmen-cover.png"
   url: https://releases.datafruits.fm/df034/
   series: datafruits
   format: ''
@@ -671,7 +671,7 @@
   artist: ブギーアイドル
   title: 音楽より遠く
   release_date: ''
-  cover: ''
+  cover: "/df022/img/boogie_idol_ongaku_yori_tooku.png"
   url: https://releases.datafruits.fm/df022/
   series: datafruits
   format: ''
@@ -695,7 +695,7 @@
   artist: Various Artists
   title: CLUB NAP
   release_date: ''
-  cover: ''
+  cover: "/df020/img/club_nap_chirasi.png"
   url: https://releases.datafruits.fm/df020/
   series: datafruits
   format: ''
@@ -755,7 +755,7 @@
   artist: PEACHES THE WALE
   title: '5'
   release_date: ''
-  cover: ''
+  cover: "/df015/img/PeachestheWale.png"
   url: https://releases.datafruits.fm/df015/
   series: datafruits
   format: ''
@@ -767,7 +767,7 @@
   artist: SEACUKE
   title: WAU EP
   release_date: ''
-  cover: ''
+  cover: "/df014/img/wau.jpg"
   url: https://releases.datafruits.fm/df014/
   series: datafruits
   format: ''
@@ -779,7 +779,7 @@
   artist: GRAZ
   title: SUBATOMIC POLYPHONICS
   release_date: ''
-  cover: ''
+  cover: "/df013/img/artfinal.png"
   url: https://releases.datafruits.fm/df013/
   series: datafruits
   format: ''
@@ -791,7 +791,7 @@
   artist: OVENRAKE
   title: DREADFUL DUB
   release_date: ''
-  cover: ''
+  cover: "/df012/img/cover.png"
   url: https://releases.datafruits.fm/df012/
   series: datafruits
   format: ''
@@ -803,7 +803,7 @@
   artist: Various Artists
   title: PETE ELLISON
   release_date: ''
-  cover: ''
+  cover: "/df011/img/pete-beat-manifesto-cover.jpg"
   url: https://releases.datafruits.fm/df011/
   series: datafruits
   format: ''
@@ -815,7 +815,7 @@
   artist: Various Artists
   title: ESPECIA BOOTLEG
   release_date: ''
-  cover: ''
+  cover: "/df010/img/whitelabel.jpg"
   url: https://releases.datafruits.fm/df010/
   series: datafruits
   format: ''
@@ -827,7 +827,7 @@
   artist: OVENRAKE
   title: BEMERYVILLE
   release_date: ''
-  cover: ''
+  cover: "/df009/img/bemeryville.jpg"
   url: https://releases.datafruits.fm/df009/
   series: datafruits
   format: ''
@@ -839,7 +839,7 @@
   artist: Various Artists
   title: FUNKY FREAKY FREESTYLEY
   release_date: ''
-  cover: ''
+  cover: "/df008/img/fff.png"
   url: https://releases.datafruits.fm/df008/
   series: datafruits
   format: ''
@@ -851,7 +851,7 @@
   artist: FIREDRILL
   title: STRAWBERRY KARAOKE
   release_date: ''
-  cover: ''
+  cover: "/df007/img/strawberry_karaoke_cover.jpg"
   url: https://releases.datafruits.fm/df007/
   series: datafruits
   format: ''
@@ -863,7 +863,7 @@
   artist: Various Artists
   title: DOODADOO REMIXES
   release_date: ''
-  cover: ''
+  cover: "/df006/img/dodadoo.jpg"
   url: https://releases.datafruits.fm/df006/
   series: datafruits
   format: ''
@@ -875,7 +875,7 @@
   artist: Various Artists
   title: HYPERFRUIT
   release_date: ''
-  cover: ''
+  cover: "/df005/img/hyperfruit.png"
   url: https://releases.datafruits.fm/df005/
   series: datafruits
   format: ''
@@ -887,7 +887,7 @@
   artist: SEACUKE
   title: SEACUKE EP
   release_date: ''
-  cover: ''
+  cover: "/df004/img/seacuke.png"
   url: https://releases.datafruits.fm/df004/
   series: datafruits
   format: ''
@@ -911,7 +911,7 @@
   artist: Various Artists
   title: DRIPTAPE Vol. 1
   release_date: ''
-  cover: ''
+  cover: "/df002/img/DRIPTAPEVOL1_COVER.png"
   url: https://releases.datafruits.fm/df002/
   series: datafruits
   format: ''
@@ -923,7 +923,7 @@
   artist: Various Artists
   title: MiniburgerTime Remixes
   release_date: ''
-  cover: ''
+  cover: "/df001/img/df001-cover.jpg"
   url: https://releases.datafruits.fm/df001/
   series: datafruits
   format: ''
